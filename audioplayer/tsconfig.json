@@ -10,5 +10,5 @@
     "noEmit": true,
     "lib": ["ESNext", "DOM"]
   },
-  "include": ["src"]
+  "include": ["src", "vite-env.d.ts"]
 }

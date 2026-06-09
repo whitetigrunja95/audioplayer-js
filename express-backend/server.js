@@ -12,7 +12,7 @@ app.use(express.json());
 
 app.use("/audio", express.static(path.join(__dirname, "audio")));
 
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
 const SECRET = "supersecretkey";
 
 // ====== In-memory storage (MVP) ======
