@@ -13,6 +13,7 @@ app.use(express.json());
 app.use("/audio", express.static(path.join(__dirname, "audio")));
 
 const PORT = process.env.PORT || 8000;
+const BASE_URL = process.env.BASE_URL || `http://127.0.0.1:${PORT}`;
 const SECRET = "supersecretkey";
 
 // ====== In-memory storage (MVP) ======
@@ -55,7 +56,6 @@ function buildTracks() {
     for (const file of files) {
       const rel = `${album}/${file}`;
 
-
       const m = file.match(/^(\d+)/);
       const trackNumber = m ? parseInt(m[1], 10) : 9999;
 
@@ -65,10 +65,9 @@ function buildTracks() {
         artist: "Михаил Подгайный",
         album,
         trackNumber,
-        audioUrl: `http://127.0.0.1:${PORT}/audio/${encodeURI(rel)}`,
+        audioUrl: `${BASE_URL}/audio/${encodeURI(rel)}`,
       });
     }
-
   }
 
   result.sort((a, b) => {
@@ -77,7 +76,6 @@ function buildTracks() {
     }
     return (a.trackNumber ?? 9999) - (b.trackNumber ?? 9999);
   });
-
 
   return result;
 }
@@ -177,5 +175,6 @@ app.delete("/api/favorites", auth, (req, res) => {
 app.get("/health", (req, res) => res.json({ ok: true }));
 
 app.listen(PORT, () => {
-  console.log(`Server started on http://localhost:${PORT}`);
+  console.log(`Server started on port ${PORT}`);
+  console.log(`Base URL: ${BASE_URL}`);
 });
