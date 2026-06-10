@@ -20,7 +20,7 @@ Frontend:
 https://audioplayer-js.vercel.app
 
 Backend API:
-https://audioplayer-backend-26ar.onrender.com
+https://audioplayer-js.onrender.com
 
 ## Технологии
 
