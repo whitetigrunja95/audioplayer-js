@@ -21,7 +21,6 @@ https://audioplayer-js.vercel.app
 
 Backend API:
 https://audioplayer-js.onrender.com
-
 ## Технологии
 
 ### Frontend
